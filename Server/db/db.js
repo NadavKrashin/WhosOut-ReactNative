@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost:27017/WhosOut')
+const DBUrl = process.env.NODE_ENV === "production" ? process.env.DB_URL : "mongodb://localhost:27017/WhosOut"
+mongoose.connect(DBUrl)
     .then(() => {
         console.log('connected to db');
     })
